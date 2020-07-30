@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "329001543546",
+    "firebase_url": "https://amber-8776e.firebaseio.com",
+    "project_id": "amber-8776e",
+    "storage_bucket": "amber-8776e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329001543546:android:b0abd8a500d653c0c718c3",
+        "android_client_info": {
+          "package_name": "com.example.amber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "329001543546-koloh4fd8ui7t7b95m4561dta8j0eeef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqh058hJJ209H0h7rQu8rssGmI3HR_YTU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329001543546-koloh4fd8ui7t7b95m4561dta8j0eeef.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
