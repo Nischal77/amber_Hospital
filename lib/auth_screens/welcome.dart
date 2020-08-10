@@ -14,6 +14,7 @@ class Welcome extends StatelessWidget {
           ),
           SizedBox(height: MediaQuery.of(context).size.height * 0.5),
           Container(
+              constraints: BoxConstraints(maxWidth: 500),
               decoration: BoxDecoration(
                   color: Color(0xfff4a925),
                   borderRadius: BorderRadius.circular(10)),
@@ -32,7 +33,7 @@ class Welcome extends StatelessWidget {
           FlatButton(
             onPressed: () {
               //go directly to list of ambulance
-              Navigator.popAndPushNamed(context, "Main");
+              Navigator.popAndPushNamed(context, "Home");
             },
             child: Text("Sign In Anonomously",
                 style: TextStyle(

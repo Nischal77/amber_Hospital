@@ -1,7 +1,11 @@
 import 'package:amber_Hospital/auth_screens/login.dart';
 import 'package:amber_Hospital/auth_screens/wrapper.dart';
-import 'package:amber_Hospital/main_screens/ambulancelist.dart';
-import 'package:amber_Hospital/main_screens/main.dart';
+import 'package:amber_Hospital/main_screens/ambulance.dart';
+import 'package:amber_Hospital/main_screens/dapartment.dart';
+import 'package:amber_Hospital/main_screens/home.dart';
+import 'package:amber_Hospital/main_screens/doctor.dart';
+import 'package:amber_Hospital/main_screens/notification.dart';
+import 'package:amber_Hospital/main_screens/rooms.dart';
 import 'package:amber_Hospital/services/auth_service.dart';
 import 'package:amber_Hospital/shared/loading.dart';
 import 'package:flutter/material.dart';
@@ -23,10 +27,14 @@ class MyApp extends StatelessWidget {
           routes: {
             "Welcome": (context) => Welcome(),
             "Login": (context) => Login(),
-            "AmbulanceList": (context) => AList(),
+            "Home": (context) => Home(),
             "Wrapper": (context) => Wrapper(),
             "Loading": (context) => Loading(),
-            "Main": (context) => Main()
+            "Doctors": (context) => Doctor(),
+            "Rooms": (context) => Room(),
+            "Department": (context) => Department(),
+            "Ambulance": (context) => Ambulance(),
+            "Notification": (context) => Notifications()
           },
           home: Loading()),
     );
