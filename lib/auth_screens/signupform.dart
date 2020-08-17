@@ -23,6 +23,7 @@ class _SignUpFormState extends State<SignUpForm> {
           children: [
             //email field
             Container(
+              constraints: BoxConstraints(maxWidth: 500),
               height: 60,
               width: MediaQuery.of(context).size.width * 0.9,
               child: TextFormField(
@@ -46,6 +47,7 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
             //password field
             Container(
+              constraints: BoxConstraints(maxWidth: 500),
               height: 60,
               width: MediaQuery.of(context).size.width * 0.9,
               child: TextFormField(
@@ -81,6 +83,7 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
             //password confirm field
             Container(
+              constraints: BoxConstraints(maxWidth: 500),
               height: 60,
               width: MediaQuery.of(context).size.width * 0.9,
               child: TextFormField(
@@ -118,6 +121,7 @@ class _SignUpFormState extends State<SignUpForm> {
               ),
             ),
             Container(
+                constraints: BoxConstraints(maxWidth: 500),
                 width: MediaQuery.of(context).size.width * 0.4,
                 decoration: BoxDecoration(
                     color: Color(0xfff4a925),

@@ -1,12 +1,12 @@
 class Hospital {
   final String name, location;
-  final List doctor, departments, rooms, ambulance, notificaton;
+  final List doctors, departments, wards, ambulance, notificaton;
   Hospital(
       {this.name,
       this.location,
-      this.doctor,
+      this.doctors,
       this.departments,
       this.ambulance,
-      this.rooms,
+      this.wards,
       this.notificaton});
 }

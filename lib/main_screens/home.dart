@@ -1,3 +1,4 @@
+import 'package:amber_Hospital/Forms/doctor.dart';
 import 'package:amber_Hospital/main_screens/ambulance.dart';
 import 'package:amber_Hospital/main_screens/dapartment.dart';
 import 'package:amber_Hospital/main_screens/doctor.dart';
@@ -17,6 +18,15 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
   int displayScreen = 5;
+  bool fbutton(int check) {
+    if (check == 5)
+      return true;
+    else if (check == 4)
+      return true;
+    else
+      return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -40,10 +50,39 @@ class _HomeState extends State<Home> {
                   style: TextStyle(color: Colors.white, fontSize: 16)))
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
-      ),
+      floatingActionButton: !fbutton(displayScreen)
+          ? FloatingActionButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        titlePadding: EdgeInsets.all(0),
+                        titleTextStyle:
+                            TextStyle(color: Colors.white, fontSize: 24),
+                        title: Container(
+                          padding: EdgeInsets.all(16),
+                          color: Colors.grey[900],
+                          child: Center(
+                            child: Text(displayScreen == 0
+                                ? "Add Doctor info"
+                                : displayScreen == 1
+                                    ? "Add Department info"
+                                    : displayScreen == 2
+                                        ? "Add Rooms"
+                                        : "Add ambulance"),
+                          ),
+                        ),
+                        content: Container(
+                            height: MediaQuery.of(context).size.height * 0.8,
+                            width: MediaQuery.of(context).size.height * 0.5,
+                            child: DoctorForm()),
+                      );
+                    });
+              },
+              child: Icon(Icons.add),
+            )
+          : SizedBox(),
       body: Container(
         color: Colors.white,
         child: Row(

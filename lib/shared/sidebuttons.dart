@@ -27,18 +27,20 @@ class _SidebuttonsState extends State<Sidebuttons> {
           InkWell(
             onTap: () => widget.onIconPress(5),
             child: AnimatedContainer(
-              margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-              duration: Duration(milliseconds: 2000),
-              curve: Curves.fastOutSlowIn,
-              width: width[4],
-              height: 60,
-              decoration: BoxDecoration(
-                  color: Colors.grey[600],
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
-                  ]),
-            ),
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                duration: Duration(milliseconds: 200),
+                curve: Curves.fastOutSlowIn,
+                width: width[4],
+                height: 60,
+                decoration: BoxDecoration(
+                    color: Colors.grey[600],
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
+                    ]),
+                child: Image.asset(
+                  "home.png",
+                )),
           ),
           InkWell(
             onTap: () {
@@ -48,82 +50,92 @@ class _SidebuttonsState extends State<Sidebuttons> {
               });
             },
             child: AnimatedContainer(
-              margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-              duration: Duration(milliseconds: 800),
-              curve: Curves.fastOutSlowIn,
-              width: width[0],
-              height: 60,
-              decoration: BoxDecoration(
-                  color: Colors.amber,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
-                  ]),
-            ),
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                duration: Duration(milliseconds: 350),
+                curve: Curves.fastOutSlowIn,
+                width: width[0],
+                height: 60,
+                decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
+                    ]),
+                child: Image.asset(
+                  "doctor.png",
+                )),
           ),
           InkWell(
             onTap: () => widget.onIconPress(1),
             child: AnimatedContainer(
-              margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-              duration: Duration(milliseconds: 1100),
-              curve: Curves.fastOutSlowIn,
-              width: width[1],
-              height: 60,
-              decoration: BoxDecoration(
-                  color: Colors.amberAccent,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
-                  ]),
-            ),
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                duration: Duration(milliseconds: 500),
+                curve: Curves.fastOutSlowIn,
+                width: width[1],
+                height: 60,
+                decoration: BoxDecoration(
+                    color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
+                    ]),
+                child: Image.asset(
+                  "hospital.png",
+                )),
           ),
           InkWell(
             onTap: () => widget.onIconPress(2),
             child: AnimatedContainer(
-              margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-              duration: Duration(milliseconds: 1400),
-              curve: Curves.fastOutSlowIn,
-              width: width[2],
-              height: 60,
-              decoration: BoxDecoration(
-                  color: Colors.orange,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
-                  ]),
-            ),
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                duration: Duration(milliseconds: 650),
+                curve: Curves.fastOutSlowIn,
+                width: width[2],
+                height: 60,
+                decoration: BoxDecoration(
+                    color: Colors.orange,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
+                    ]),
+                child: Image.asset(
+                  "rooms.png",
+                )),
           ),
           InkWell(
             onTap: () => widget.onIconPress(3),
             child: AnimatedContainer(
-              margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-              duration: Duration(milliseconds: 1700),
-              curve: Curves.fastOutSlowIn,
-              width: width[3],
-              height: 60,
-              decoration: BoxDecoration(
-                  color: Colors.orangeAccent,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
-                  ]),
-            ),
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                duration: Duration(milliseconds: 800),
+                curve: Curves.fastOutSlowIn,
+                width: width[3],
+                height: 60,
+                decoration: BoxDecoration(
+                    color: Colors.orangeAccent,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
+                    ]),
+                child: Image.asset(
+                  "ambulance.png",
+                )),
           ),
           InkWell(
             onTap: () => widget.onIconPress(4),
             child: AnimatedContainer(
-              margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-              duration: Duration(milliseconds: 2000),
-              curve: Curves.fastOutSlowIn,
-              width: width[4],
-              height: 60,
-              decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
-                  ]),
-            ),
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                duration: Duration(milliseconds: 950),
+                curve: Curves.fastOutSlowIn,
+                width: width[4],
+                height: 60,
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
+                    ]),
+                child: Image.asset(
+                  "notification.png",
+                )),
           ),
         ],
       ),

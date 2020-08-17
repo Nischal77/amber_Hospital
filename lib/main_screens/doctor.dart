@@ -42,7 +42,8 @@ class Doctor extends StatelessWidget {
             child: GridView.builder(
                 itemCount: doctor.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: noOfrows()),
+                    crossAxisCount:
+                        noOfrows() > 3 ? noOfrows() - 1 : noOfrows()),
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
                       padding: EdgeInsets.all(8),
@@ -51,12 +52,15 @@ class Doctor extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                                width: MediaQuery.of(context).size.width * 0.4,
-                                height:
-                                    MediaQuery.of(context).size.width * 0.25,
-                                child: Card(
-                                    elevation: 8, color: Colors.grey[800])),
+                            Expanded(
+                              child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
+                                  height:
+                                      MediaQuery.of(context).size.width * 0.25,
+                                  child: Card(
+                                      elevation: 8, color: Colors.grey[800])),
+                            ),
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 10.0, top: 4),

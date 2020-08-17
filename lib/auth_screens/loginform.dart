@@ -24,6 +24,7 @@ class _LoginFormState extends State<LoginForm> {
           children: [
             //email  field
             Container(
+              constraints: BoxConstraints(maxWidth: 500),
               height: 60,
               width: MediaQuery.of(context).size.width * 0.9,
               margin: EdgeInsets.all(5),
@@ -48,6 +49,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
             //password field
             Container(
+              constraints: BoxConstraints(maxWidth: 500),
               height: 60,
               width: MediaQuery.of(context).size.width * 0.9,
               child: TextFormField(
@@ -85,6 +87,7 @@ class _LoginFormState extends State<LoginForm> {
             ),
             //login button
             Container(
+                constraints: BoxConstraints(maxWidth: 500),
                 width: MediaQuery.of(context).size.width * 0.4,
                 decoration: BoxDecoration(
                     color: Color(0xfff4a925),
