@@ -1,7 +1,11 @@
+import 'package:amber_Hospital/Forms/ambulance.dart';
+import 'package:amber_Hospital/Forms/depart.dart';
 import 'package:amber_Hospital/Forms/doctor.dart';
+import 'package:amber_Hospital/Forms/rooms.dart';
 import 'package:amber_Hospital/main_screens/ambulance.dart';
 import 'package:amber_Hospital/main_screens/dapartment.dart';
 import 'package:amber_Hospital/main_screens/doctor.dart';
+import 'package:amber_Hospital/main_screens/hospital.dart';
 import 'package:amber_Hospital/main_screens/notification.dart';
 import 'package:amber_Hospital/main_screens/rooms.dart';
 import 'package:flutter/material.dart';
@@ -57,27 +61,29 @@ class _HomeState extends State<Home> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        titlePadding: EdgeInsets.all(0),
-                        titleTextStyle:
-                            TextStyle(color: Colors.white, fontSize: 24),
-                        title: Container(
-                          padding: EdgeInsets.all(16),
-                          color: Colors.grey[900],
-                          child: Center(
-                            child: Text(displayScreen == 0
-                                ? "Add Doctor info"
-                                : displayScreen == 1
-                                    ? "Add Department info"
-                                    : displayScreen == 2
-                                        ? "Add Rooms"
-                                        : "Add ambulance"),
+                          titlePadding: EdgeInsets.all(0),
+                          titleTextStyle:
+                              TextStyle(color: Colors.white, fontSize: 24),
+                          title: Container(
+                            padding: EdgeInsets.all(16),
+                            color: Colors.grey[900],
+                            child: Center(
+                              child: Text(displayScreen == 0
+                                  ? "Add Doctor info"
+                                  : displayScreen == 1
+                                      ? "Add Department info"
+                                      : displayScreen == 2
+                                          ? "Add Rooms"
+                                          : "Add ambulance"),
+                            ),
                           ),
-                        ),
-                        content: Container(
-                            height: MediaQuery.of(context).size.height * 0.8,
-                            width: MediaQuery.of(context).size.height * 0.5,
-                            child: DoctorForm()),
-                      );
+                          content: displayScreen == 0
+                              ? DoctorForm()
+                              : displayScreen == 1
+                                  ? DepartForm()
+                                  : displayScreen == 2
+                                      ? RoomForm()
+                                      : AmbulanceForm());
                     });
               },
               child: Icon(Icons.add),
@@ -97,20 +103,15 @@ class _HomeState extends State<Home> {
             if (displayScreen == 0)
               Doctor()
             else if (displayScreen == 1)
-              Room()
-            else if (displayScreen == 2)
               Department()
+            else if (displayScreen == 2)
+              Room()
             else if (displayScreen == 3)
               Ambulance()
             else if (displayScreen == 4)
               Notifications()
             else if (displayScreen == 5)
-              Container(
-                  width: MediaQuery.of(context).size.width * 0.87,
-                  color: Colors.grey[300],
-                  child: Center(
-                      child:
-                          Text("Your Hospital Information will be shown here")))
+              Hospitald()
           ],
         ),
       ),

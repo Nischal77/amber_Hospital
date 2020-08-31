@@ -1,19 +1,12 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
-class Loading extends StatefulWidget {
+class Loading2 extends StatefulWidget {
   @override
   _LoadingState createState() => _LoadingState();
 }
 
-class _LoadingState extends State<Loading> {
-  @override
-  void initState() {
-    super.initState();
-    new Future.delayed(const Duration(seconds: 5),
-        () => Navigator.popAndPushNamed(context, "Wrapper"));
-  }
-
+class _LoadingState extends State<Loading2> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,

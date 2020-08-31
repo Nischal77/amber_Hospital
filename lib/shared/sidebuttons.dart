@@ -19,7 +19,7 @@ class _SidebuttonsState extends State<Sidebuttons> {
       MediaQuery.of(context).size.width * 0.09
     ];
     return Container(
-      color: Colors.grey[350],
+      color: Colors.grey[400],
       width: MediaQuery.of(context).size.width * 0.13,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +39,25 @@ class _SidebuttonsState extends State<Sidebuttons> {
                       BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
                     ]),
                 child: Image.asset(
-                  "home.png",
+                  "assets/home.png",
+                )),
+          ),
+          InkWell(
+            onTap: () => widget.onIconPress(1),
+            child: AnimatedContainer(
+                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                duration: Duration(milliseconds: 500),
+                curve: Curves.fastOutSlowIn,
+                width: width[1],
+                height: 60,
+                decoration: BoxDecoration(
+                    color: Colors.amberAccent,
+                    borderRadius: BorderRadius.circular(30),
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
+                    ]),
+                child: Image.asset(
+                  "assets/hospital.png",
                 )),
           ),
           InkWell(
@@ -62,25 +80,7 @@ class _SidebuttonsState extends State<Sidebuttons> {
                       BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
                     ]),
                 child: Image.asset(
-                  "doctor.png",
-                )),
-          ),
-          InkWell(
-            onTap: () => widget.onIconPress(1),
-            child: AnimatedContainer(
-                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-                duration: Duration(milliseconds: 500),
-                curve: Curves.fastOutSlowIn,
-                width: width[1],
-                height: 60,
-                decoration: BoxDecoration(
-                    color: Colors.amberAccent,
-                    borderRadius: BorderRadius.circular(30),
-                    boxShadow: [
-                      BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
-                    ]),
-                child: Image.asset(
-                  "hospital.png",
+                  "assets/doctor.png",
                 )),
           ),
           InkWell(
@@ -98,7 +98,7 @@ class _SidebuttonsState extends State<Sidebuttons> {
                       BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
                     ]),
                 child: Image.asset(
-                  "rooms.png",
+                  "assets/rooms.png",
                 )),
           ),
           InkWell(
@@ -116,7 +116,7 @@ class _SidebuttonsState extends State<Sidebuttons> {
                       BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
                     ]),
                 child: Image.asset(
-                  "ambulance.png",
+                  "assets/ambulance.png",
                 )),
           ),
           InkWell(
@@ -134,7 +134,7 @@ class _SidebuttonsState extends State<Sidebuttons> {
                       BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
                     ]),
                 child: Image.asset(
-                  "notification.png",
+                  "assets/notification.png",
                 )),
           ),
         ],
