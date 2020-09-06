@@ -9,133 +9,277 @@ class Sidebuttons extends StatefulWidget {
 }
 
 class _SidebuttonsState extends State<Sidebuttons> {
+  List<double> width = [0.09, 0.09, 0.09, 0.09, 0.09, 0.18];
+  List<BorderRadius> borderRadius = [
+    BorderRadius.all(Radius.circular(30)),
+    BorderRadius.all(Radius.circular(30)),
+    BorderRadius.all(Radius.circular(30)),
+    BorderRadius.all(Radius.circular(30)),
+    BorderRadius.all(Radius.circular(30)),
+    BorderRadius.horizontal(left: Radius.circular(30))
+  ];
+
   @override
   Widget build(BuildContext context) {
-    List<double> width = [
-      MediaQuery.of(context).size.width * 0.09,
-      MediaQuery.of(context).size.width * 0.09,
-      MediaQuery.of(context).size.width * 0.09,
-      MediaQuery.of(context).size.width * 0.09,
-      MediaQuery.of(context).size.width * 0.09
-    ];
     return Container(
       color: Colors.grey[400],
       width: MediaQuery.of(context).size.width * 0.13,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          InkWell(
-            onTap: () => widget.onIconPress(5),
-            child: AnimatedContainer(
-                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-                duration: Duration(milliseconds: 200),
-                curve: Curves.fastOutSlowIn,
-                width: width[4],
-                height: 60,
-                decoration: BoxDecoration(
-                    color: Colors.grey[600],
-                    borderRadius: BorderRadius.circular(30),
-                    boxShadow: [
-                      BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
-                    ]),
-                child: Image.asset(
-                  "assets/home.png",
-                )),
-          ),
-          InkWell(
-            onTap: () => widget.onIconPress(1),
-            child: AnimatedContainer(
-                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
-                duration: Duration(milliseconds: 500),
-                curve: Curves.fastOutSlowIn,
-                width: width[1],
-                height: 60,
-                decoration: BoxDecoration(
-                    color: Colors.amberAccent,
-                    borderRadius: BorderRadius.circular(30),
-                    boxShadow: [
-                      BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
-                    ]),
-                child: Image.asset(
-                  "assets/hospital.png",
-                )),
-          ),
-          InkWell(
+          GestureDetector(
             onTap: () {
               setState(() {
-                widget.onIconPress(0);
-                width[0] = MediaQuery.of(context).size.width * 0.1;
+                widget.onIconPress(5);
+                width[0] = 0.09;
+                width[1] = 0.09;
+                width[2] = 0.09;
+                width[3] = 0.09;
+                width[4] = 0.09;
+                width[5] = 0.18;
+                borderRadius[0] = BorderRadius.all(Radius.circular(30));
+                borderRadius[1] = BorderRadius.all(Radius.circular(30));
+                borderRadius[2] = BorderRadius.all(Radius.circular(30));
+                borderRadius[3] = BorderRadius.all(Radius.circular(30));
+                borderRadius[4] = BorderRadius.all(Radius.circular(30));
+                borderRadius[5] =
+                    BorderRadius.horizontal(left: Radius.circular(30));
               });
             },
             child: AnimatedContainer(
-                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                margin: EdgeInsets.fromLTRB(8, 4, 0, 4),
+                duration: Duration(milliseconds: 200),
+                curve: Curves.fastOutSlowIn,
+                width: MediaQuery.of(context).size.width * width[5],
+                height: 60,
+                decoration: BoxDecoration(
+                    color: Colors.grey[600],
+                    borderRadius: borderRadius[5],
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
+                    ]),
+                child: Row(children: [
+                  Image.asset(
+                    "assets/home.png",
+                  ),
+                  Expanded(
+                      child: Text(
+                    "Home",
+                    style: TextStyle(color: Colors.white),
+                  ))
+                ])),
+          ),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                widget.onIconPress(1);
+                width[0] = 0.09;
+                width[1] = 0.18;
+                width[2] = 0.09;
+                width[3] = 0.09;
+                width[4] = 0.09;
+                width[5] = 0.09;
+                borderRadius[0] =
+                    BorderRadius.horizontal(left: Radius.circular(30));
+                borderRadius[1] = BorderRadius.all(Radius.circular(30));
+                borderRadius[2] = BorderRadius.all(Radius.circular(30));
+                borderRadius[3] = BorderRadius.all(Radius.circular(30));
+                borderRadius[4] = BorderRadius.all(Radius.circular(30));
+                borderRadius[5] = BorderRadius.all(Radius.circular(30));
+              });
+            },
+            child: AnimatedContainer(
+                margin: EdgeInsets.fromLTRB(8, 4, 0, 4),
+                duration: Duration(milliseconds: 500),
+                curve: Curves.fastOutSlowIn,
+                width: MediaQuery.of(context).size.width * width[1],
+                height: 60,
+                decoration: BoxDecoration(
+                    color: Colors.amberAccent,
+                    borderRadius: borderRadius[0],
+                    boxShadow: [
+                      BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
+                    ]),
+                child: Row(children: [
+                  Image.asset(
+                    "assets/hospital.png",
+                  ),
+                  Expanded(
+                      child: Text(
+                    "Departments",
+                    style: TextStyle(color: Colors.white),
+                  ))
+                ])),
+          ),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                setState(() {
+                  widget.onIconPress(0);
+                  width[0] = 0.18;
+                  width[1] = 0.09;
+                  width[2] = 0.09;
+                  width[3] = 0.09;
+                  width[4] = 0.09;
+                  width[5] = 0.09;
+                  borderRadius[0] = BorderRadius.all(Radius.circular(30));
+                  borderRadius[1] =
+                      BorderRadius.horizontal(left: Radius.circular(30));
+                  borderRadius[2] = BorderRadius.all(Radius.circular(30));
+                  borderRadius[3] = BorderRadius.all(Radius.circular(30));
+                  borderRadius[4] = BorderRadius.all(Radius.circular(30));
+                  borderRadius[5] = BorderRadius.all(Radius.circular(30));
+                });
+              });
+            },
+            child: AnimatedContainer(
+                margin: EdgeInsets.fromLTRB(8, 4, 0, 4),
                 duration: Duration(milliseconds: 350),
                 curve: Curves.fastOutSlowIn,
-                width: width[0],
+                width: MediaQuery.of(context).size.width * width[0],
                 height: 60,
                 decoration: BoxDecoration(
                     color: Colors.amber,
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: borderRadius[1],
                     boxShadow: [
                       BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
                     ]),
-                child: Image.asset(
-                  "assets/doctor.png",
-                )),
+                child: Row(children: [
+                  Image.asset(
+                    "assets/doctor.png",
+                  ),
+                  Expanded(
+                      child: Text(
+                    "Doctors",
+                    style: TextStyle(color: Colors.white),
+                  ))
+                ])),
           ),
-          InkWell(
-            onTap: () => widget.onIconPress(2),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                widget.onIconPress(2);
+                width[0] = 0.09;
+                width[1] = 0.09;
+                width[2] = 0.18;
+                width[3] = 0.09;
+                width[4] = 0.09;
+                width[5] = 0.09;
+                borderRadius[0] = BorderRadius.all(Radius.circular(30));
+                borderRadius[1] = BorderRadius.all(Radius.circular(30));
+                borderRadius[2] =
+                    BorderRadius.horizontal(left: Radius.circular(30));
+                borderRadius[3] = BorderRadius.all(Radius.circular(30));
+                borderRadius[4] = BorderRadius.all(Radius.circular(30));
+                borderRadius[5] = BorderRadius.all(Radius.circular(30));
+              });
+            },
             child: AnimatedContainer(
-                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                margin: EdgeInsets.fromLTRB(8, 4, 0, 4),
                 duration: Duration(milliseconds: 650),
                 curve: Curves.fastOutSlowIn,
-                width: width[2],
+                width: MediaQuery.of(context).size.width * width[2],
                 height: 60,
                 decoration: BoxDecoration(
                     color: Colors.orange,
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: borderRadius[2],
                     boxShadow: [
                       BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
                     ]),
-                child: Image.asset(
-                  "assets/rooms.png",
-                )),
+                child: Row(children: [
+                  Image.asset(
+                    "assets/rooms.png",
+                  ),
+                  Expanded(
+                      child: Text(
+                    "Wards",
+                    style: TextStyle(color: Colors.white),
+                  ))
+                ])),
           ),
-          InkWell(
-            onTap: () => widget.onIconPress(3),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                widget.onIconPress(3);
+                width[0] = 0.09;
+                width[1] = 0.09;
+                width[2] = 0.09;
+                width[3] = 0.18;
+                width[4] = 0.09;
+                width[5] = 0.09;
+                borderRadius[0] = BorderRadius.all(Radius.circular(30));
+                borderRadius[1] = BorderRadius.all(Radius.circular(30));
+                borderRadius[2] = BorderRadius.all(Radius.circular(30));
+                borderRadius[3] =
+                    BorderRadius.horizontal(left: Radius.circular(30));
+                borderRadius[4] = BorderRadius.all(Radius.circular(30));
+                borderRadius[5] = BorderRadius.all(Radius.circular(30));
+              });
+            },
             child: AnimatedContainer(
-                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                margin: EdgeInsets.fromLTRB(8, 4, 0, 4),
                 duration: Duration(milliseconds: 800),
                 curve: Curves.fastOutSlowIn,
-                width: width[3],
+                width: MediaQuery.of(context).size.width * width[3],
                 height: 60,
                 decoration: BoxDecoration(
                     color: Colors.orangeAccent,
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: borderRadius[3],
                     boxShadow: [
                       BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
                     ]),
-                child: Image.asset(
-                  "assets/ambulance.png",
-                )),
+                child: Row(children: [
+                  Image.asset(
+                    "assets/ambulance.png",
+                  ),
+                  Expanded(
+                      child: Text(
+                    "Ambulance",
+                    style: TextStyle(color: Colors.white),
+                  ))
+                ])),
           ),
-          InkWell(
-            onTap: () => widget.onIconPress(4),
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                widget.onIconPress(4);
+                width[0] = 0.09;
+                width[1] = 0.09;
+                width[2] = 0.09;
+                width[3] = 0.09;
+                width[4] = 0.18;
+                width[5] = 0.09;
+                borderRadius[0] = BorderRadius.all(Radius.circular(30));
+                borderRadius[1] = BorderRadius.all(Radius.circular(30));
+                borderRadius[2] = BorderRadius.all(Radius.circular(30));
+                borderRadius[3] = BorderRadius.all(Radius.circular(30));
+                borderRadius[4] =
+                    BorderRadius.horizontal(left: Radius.circular(30));
+                borderRadius[5] = BorderRadius.all(Radius.circular(30));
+              });
+            },
             child: AnimatedContainer(
-                margin: EdgeInsets.fromLTRB(0, 4, 0, 4),
+                margin: EdgeInsets.fromLTRB(8, 4, 0, 4),
                 duration: Duration(milliseconds: 950),
                 curve: Curves.fastOutSlowIn,
-                width: width[4],
+                width: MediaQuery.of(context).size.width * width[4],
                 height: 60,
                 decoration: BoxDecoration(
                     color: Colors.black,
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: borderRadius[4],
                     boxShadow: [
                       BoxShadow(color: Colors.grey, offset: Offset(2, 2)),
                     ]),
-                child: Image.asset(
-                  "assets/notification.png",
-                )),
+                child: Row(children: [
+                  Image.asset(
+                    "assets/notification.png",
+                  ),
+                  Expanded(
+                      child: Text(
+                    "Notification",
+                    style: TextStyle(color: Colors.white),
+                  ))
+                ])),
           ),
         ],
       ),

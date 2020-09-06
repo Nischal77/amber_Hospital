@@ -25,7 +25,7 @@ class Department extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.80,
                           height: 80,
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.grey[400],
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                           margin: EdgeInsets.all(8),

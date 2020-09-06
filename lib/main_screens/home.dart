@@ -1,13 +1,13 @@
 import 'package:amber_Hospital/Forms/ambulance.dart';
 import 'package:amber_Hospital/Forms/depart.dart';
 import 'package:amber_Hospital/Forms/doctor.dart';
-import 'package:amber_Hospital/Forms/rooms.dart';
+import 'package:amber_Hospital/Forms/ward.dart';
 import 'package:amber_Hospital/main_screens/ambulance.dart';
 import 'package:amber_Hospital/main_screens/dapartment.dart';
 import 'package:amber_Hospital/main_screens/doctor.dart';
 import 'package:amber_Hospital/main_screens/hospital.dart';
 import 'package:amber_Hospital/main_screens/notification.dart';
-import 'package:amber_Hospital/main_screens/rooms.dart';
+import 'package:amber_Hospital/main_screens/wards.dart';
 import 'package:flutter/material.dart';
 import 'package:amber_Hospital/shared/sidebuttons.dart';
 import 'package:amber_Hospital/services/auth_service.dart';

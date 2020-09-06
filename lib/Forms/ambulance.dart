@@ -1,4 +1,4 @@
-import 'package:amber_Hospital/model/doctor.dart';
+import 'package:amber_Hospital/model/ambulance.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,14 +12,13 @@ class AmbulanceForm extends StatefulWidget {
 
 class _AmbulanceFormState extends State<AmbulanceForm> {
   final _formKey = GlobalKey<FormState>();
-  String name, address, contact, email, department, achievement;
-  List doctors;
+  String id, location, driverName, email, number, status;
 
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
     return Container(
-      height: MediaQuery.of(context).size.height * 0.8,
+      height: MediaQuery.of(context).size.height * 0.48,
       width: MediaQuery.of(context).size.height * 0.5,
       child: Form(
           key: _formKey,
@@ -33,7 +32,7 @@ class _AmbulanceFormState extends State<AmbulanceForm> {
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Text(
-                        "Name:",
+                        "Id:",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w500),
                       ),
@@ -46,11 +45,11 @@ class _AmbulanceFormState extends State<AmbulanceForm> {
                         //checks if the field is empty or not
                         validator: (input) {
                           if (input.isEmpty) {
-                            return 'Provide a name';
+                            return 'Provide a ambulance number';
                           } else
                             return null;
                         },
-                        onChanged: (input) => name = input,
+                        onChanged: (input) => id = input,
                         decoration: new InputDecoration(
                           isDense: true,
                           contentPadding: EdgeInsets.all(8),
@@ -70,7 +69,7 @@ class _AmbulanceFormState extends State<AmbulanceForm> {
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Text(
-                        "Address:",
+                        "Driver Name:",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w500),
                       ),
@@ -83,11 +82,11 @@ class _AmbulanceFormState extends State<AmbulanceForm> {
                         //checks if the field is empty or not
                         validator: (input) {
                           if (input.isEmpty) {
-                            return 'Provide an address';
+                            return 'Provide driver name';
                           } else
                             return null;
                         },
-                        onChanged: (input) => address = input,
+                        onChanged: (input) => driverName = input,
                         decoration: new InputDecoration(
                           isDense: true,
                           contentPadding: EdgeInsets.all(8),
@@ -95,7 +94,7 @@ class _AmbulanceFormState extends State<AmbulanceForm> {
                           filled: true,
                           fillColor: Colors.grey[200],
                         ),
-                        keyboardType: TextInputType.streetAddress,
+                        keyboardType: TextInputType.name,
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
@@ -127,7 +126,7 @@ class _AmbulanceFormState extends State<AmbulanceForm> {
                         inputFormatters: [
                           FilteringTextInputFormatter.digitsOnly
                         ],
-                        onChanged: (input) => contact = input,
+                        onChanged: (input) => number = input,
                         decoration: new InputDecoration(
                           isDense: true,
                           contentPadding: EdgeInsets.all(8),
@@ -184,7 +183,7 @@ class _AmbulanceFormState extends State<AmbulanceForm> {
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Text(
-                        "Department:",
+                        "location:",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.w500),
                       ),
@@ -197,11 +196,11 @@ class _AmbulanceFormState extends State<AmbulanceForm> {
                         //checks if the field is empty or not
                         validator: (input) {
                           if (input.isEmpty) {
-                            return 'Provide a department';
+                            return 'Provide a location';
                           } else
                             return null;
                         },
-                        onChanged: (input) => department = input,
+                        onChanged: (input) => location = input,
                         decoration: new InputDecoration(
                           isDense: true,
                           contentPadding: EdgeInsets.all(8),
@@ -214,58 +213,20 @@ class _AmbulanceFormState extends State<AmbulanceForm> {
                       ),
                     ),
                   ]),
-              Row(children: [
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Text(
-                    "Achievement:",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.height * 0.32,
-                )
-              ]),
-              Container(
-                constraints: BoxConstraints(maxWidth: 500),
-                height: 200,
-                width: MediaQuery.of(context).size.height * 0.48,
-                child: TextFormField(
-                  //checks if the field is empty or not
-                  validator: (input) {
-                    if (input.isEmpty) {
-                      return 'Provide achievement';
-                    } else
-                      return null;
-                  },
-                  onChanged: (input) => achievement = input,
-                  decoration: new InputDecoration(
-                    isDense: true,
-                    contentPadding: EdgeInsets.all(8),
-                    border: OutlineInputBorder(),
-                    filled: true,
-                    fillColor: Colors.grey[200],
-                  ),
-                  keyboardType: TextInputType.multiline,
-                  maxLines: 6,
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
               GestureDetector(
                 onTap: () async {
                   if (_formKey.currentState.validate()) {
-                    Doctor doctor = Doctor(
-                        name: name,
-                        contact: contact,
-                        achievement: achievement,
-                        address: address,
-                        department: department,
+                    Ambulance ambulance = Ambulance(
+                        id: id,
+                        driverName: driverName,
+                        number: number,
+                        location: location,
                         email: email);
                     await Firestore.instance
                         .collection("hospital")
                         .document(user.uid)
                         .updateData({
-                      "doctors": FieldValue.arrayUnion([doctor.toJson()])
+                      "ambulance": FieldValue.arrayUnion([ambulance.toJson()])
                     });
                     Navigator.pop(context);
                   }

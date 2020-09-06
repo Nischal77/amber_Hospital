@@ -5,7 +5,7 @@ import 'package:amber_Hospital/main_screens/dapartment.dart';
 import 'package:amber_Hospital/main_screens/home.dart';
 import 'package:amber_Hospital/main_screens/doctor.dart';
 import 'package:amber_Hospital/main_screens/notification.dart';
-import 'package:amber_Hospital/main_screens/rooms.dart';
+import 'package:amber_Hospital/main_screens/wards.dart';
 import 'package:amber_Hospital/services/auth_service.dart';
 import 'package:amber_Hospital/shared/loading.dart';
 import 'package:flutter/material.dart';

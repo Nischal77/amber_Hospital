@@ -2,6 +2,7 @@ import 'package:amber_Hospital/model/hospital.dart';
 import 'package:amber_Hospital/model/user.dart';
 import 'package:amber_Hospital/services/database.dart';
 import 'package:amber_Hospital/shared/loading2.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -57,40 +58,94 @@ class Doctor extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
                               padding: EdgeInsets.all(8),
-                              child: Card(
-                                elevation: 8,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: Container(
-                                        margin: EdgeInsets.all(4),
-                                        child: Card(
-                                            child: Center(
-                                              child: Icon(
-                                                Icons.person,
-                                                size: 80,
-                                                color: Colors.white,
-                                              ),
+                              child: GestureDetector(
+                                onLongPress: () {
+                                  return showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          elevation: 8,
+                                          content: Text(
+                                              "Are you sure you want to delete this doctor?"),
+                                          actions: [
+                                            RaisedButton(
+                                              color: Colors.green,
+                                              onPressed: () async {
+                                                await Firestore.instance
+                                                    .collection("hospital")
+                                                    .document(user.uid)
+                                                    .updateData({
+                                                  "doctors":
+                                                      FieldValue.arrayRemove([
+                                                    hospitaldata.doctors[index]
+                                                  ])
+                                                });
+                                                Navigator.pop(context);
+                                              },
+                                              child: Text("Yes"),
                                             ),
-                                            elevation: 8,
-                                            color: Colors.grey[800]),
+                                            RaisedButton(
+                                              color: Colors.red,
+                                              child: Text("No"),
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                            )
+                                          ],
+                                        );
+                                      });
+                                },
+                                child: Card(
+                                  elevation: 8,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        child: Container(
+                                          margin: EdgeInsets.all(4),
+                                          child: Card(
+                                              child: Center(
+                                                child: Icon(
+                                                  Icons.person,
+                                                  size: 80,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              elevation: 8,
+                                              color: Colors.grey[800]),
+                                        ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10.0, top: 4),
-                                      child: Text(
-                                          hospitaldata.doctors[index]["name"]),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10.0, top: 2),
-                                      child: Text("Department: " +
-                                          hospitaldata.doctors[index]
-                                              ["department"]),
-                                    )
-                                  ],
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 4),
+                                        child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Text(hospitaldata.doctors[index]
+                                                  ["name"]),
+                                              Icon(
+                                                Icons.adjust,
+                                                size: 16,
+                                                color:
+                                                    hospitaldata.doctors[index]
+                                                                ["state"] ==
+                                                            "active"
+                                                        ? Colors.green
+                                                        : Colors.red,
+                                              )
+                                            ]),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10.0, top: 2),
+                                        child: Text("Department: " +
+                                            hospitaldata.doctors[index]
+                                                ["department"]),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ));
                         }),

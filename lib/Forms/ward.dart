@@ -1,29 +1,23 @@
-import 'package:amber_Hospital/model/doctor.dart';
 import 'package:amber_Hospital/model/hospital.dart';
+import 'package:amber_Hospital/model/ward.dart';
 import 'package:amber_Hospital/services/database.dart';
 import 'package:amber_Hospital/shared/loading2.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:amber_Hospital/model/user.dart';
 
-class DoctorForm extends StatefulWidget {
+class RoomForm extends StatefulWidget {
   @override
-  _DoctorFormState createState() => _DoctorFormState();
+  _RoomFormState createState() => _RoomFormState();
 }
 
-class _DoctorFormState extends State<DoctorForm> {
+class _RoomFormState extends State<RoomForm> {
   final _formKey = GlobalKey<FormState>();
-  String name,
-      address,
-      contact,
-      email,
-      department = "choose a department",
-      achievement;
+  String department = "choose a department", name, noOfBeds;
   bool expand = false;
-  double hei = 200;
+  double hei = 100;
 
   @override
   Widget build(BuildContext context) {
@@ -85,121 +79,7 @@ class _DoctorFormState extends State<DoctorForm> {
                             Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: Text(
-                                "Address:",
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                            Container(
-                              constraints: BoxConstraints(maxWidth: 500),
-                              height: 60,
-                              width: MediaQuery.of(context).size.height * 0.32,
-                              child: TextFormField(
-                                //checks if the field is empty or not
-                                validator: (input) {
-                                  if (input.isEmpty) {
-                                    return 'Provide an address';
-                                  } else
-                                    return null;
-                                },
-                                onChanged: (input) => address = input,
-                                decoration: new InputDecoration(
-                                  isDense: true,
-                                  contentPadding: EdgeInsets.all(8),
-                                  border: OutlineInputBorder(),
-                                  filled: true,
-                                  fillColor: Colors.grey[200],
-                                ),
-                                keyboardType: TextInputType.streetAddress,
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ),
-                          ]),
-                      Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Text(
-                                "Contact no:",
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                            Container(
-                              constraints: BoxConstraints(maxWidth: 500),
-                              height: 60,
-                              width: MediaQuery.of(context).size.height * 0.32,
-                              child: TextFormField(
-                                //checks if the field is empty or not
-                                validator: (input) {
-                                  if (input.isEmpty) {
-                                    return 'Provide a valid number';
-                                  } else
-                                    return null;
-                                },
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.digitsOnly
-                                ],
-                                onChanged: (input) => contact = input,
-                                decoration: new InputDecoration(
-                                  isDense: true,
-                                  contentPadding: EdgeInsets.all(8),
-                                  border: OutlineInputBorder(),
-                                  filled: true,
-                                  fillColor: Colors.grey[200],
-                                ),
-                                keyboardType: TextInputType.number,
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ),
-                          ]),
-                      Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Text(
-                                "Email:",
-                                style: TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                            Container(
-                              constraints: BoxConstraints(maxWidth: 500),
-                              height: 60,
-                              width: MediaQuery.of(context).size.height * 0.32,
-                              child: TextFormField(
-                                //checks if the field is empty or not
-                                validator: (input) {
-                                  if (input.isEmpty) {
-                                    return 'Provide an email';
-                                  } else
-                                    return null;
-                                },
-                                onChanged: (input) => email = input,
-                                decoration: new InputDecoration(
-                                  isDense: true,
-                                  contentPadding: EdgeInsets.all(8),
-                                  border: OutlineInputBorder(),
-                                  filled: true,
-                                  fillColor: Colors.grey[200],
-                                ),
-                                keyboardType: TextInputType.emailAddress,
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ),
-                          ]),
-                      Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Text(
-                                "Department:",
+                                "department:",
                                 style: TextStyle(
                                     fontSize: 18, fontWeight: FontWeight.w500),
                               ),
@@ -290,67 +170,63 @@ class _DoctorFormState extends State<DoctorForm> {
                               ]),
                             )
                           ]),
-                      Row(children: [
-                        Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Text(
-                            "Achievement:",
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w500),
-                          ),
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.height * 0.32,
-                        )
-                      ]),
-                      Container(
-                        constraints: BoxConstraints(maxWidth: 500),
-                        height: hei,
-                        width: MediaQuery.of(context).size.height * 0.48,
-                        child: TextFormField(
-                          //checks if the field is empty or not
-                          validator: (input) {
-                            if (input.isEmpty) {
-                              return 'Provide achievement';
-                            } else
-                              return null;
-                          },
-                          onChanged: (input) => achievement = input,
-                          decoration: new InputDecoration(
-                            isDense: true,
-                            contentPadding: EdgeInsets.all(8),
-                            border: OutlineInputBorder(),
-                            filled: true,
-                            fillColor: Colors.grey[200],
-                          ),
-                          keyboardType: TextInputType.multiline,
-                          maxLines: 6,
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
+                      Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Text(
+                                "No of Beds:",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            Container(
+                              constraints: BoxConstraints(maxWidth: 500),
+                              height: 60,
+                              width: MediaQuery.of(context).size.height * 0.32,
+                              child: TextFormField(
+                                //checks if the field is empty or not
+                                validator: (input) {
+                                  if (input.isEmpty) {
+                                    return 'Provide a valid number';
+                                  } else
+                                    return null;
+                                },
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.digitsOnly
+                                ],
+                                onChanged: (input) => noOfBeds = input,
+                                decoration: new InputDecoration(
+                                  isDense: true,
+                                  contentPadding: EdgeInsets.all(8),
+                                  border: OutlineInputBorder(),
+                                  filled: true,
+                                  fillColor: Colors.grey[200],
+                                ),
+                                keyboardType: TextInputType.number,
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                          ]),
                       GestureDetector(
                         onTap: () async {
                           if (_formKey.currentState.validate()) {
-                            Doctor doctor = Doctor(
+                            Ward ward = Ward(
                                 name: name,
-                                contact: contact,
-                                achievement: achievement,
-                                address: address,
                                 department: department,
-                                email: email,
-                                state: "active");
+                                noOfBeds: noOfBeds);
                             await Firestore.instance
                                 .collection("hospital")
                                 .document(user.uid)
                                 .updateData({
-                              "doctors":
-                                  FieldValue.arrayUnion([doctor.toJson()])
+                              "wards": FieldValue.arrayUnion([ward.toJson()])
                             });
                             Navigator.pop(context);
                           }
                         },
                         child: Container(
-                            margin: EdgeInsets.all(8),
                             constraints: BoxConstraints(maxWidth: 500),
                             width: MediaQuery.of(context).size.height * 0.32,
                             padding: EdgeInsets.all(16),

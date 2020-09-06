@@ -95,24 +95,24 @@ class _LoginFormState extends State<LoginForm> {
                 child: FlatButton(
                     onPressed: () async {
                       //check if the validators are fullfilled
-                      if (_formkey.currentState.validate()) {
-                        //enabling the loading state
-                        setState(() => loading = true);
-                        //wait for the signin function to complete
-                        dynamic result = await _auth.signInWithEmailAndPassword(
-                            _email, _password);
-                        //check if signin function returns user or not
-                        if (result == null) {
-                          setState(() {
-                            error =
-                                'could not sign in with the email and password';
-                            loading = false;
-                          });
-                        } else {
-                          Navigator.of(context).pushNamedAndRemoveUntil(
-                              'Wrapper', (Route<dynamic> route) => false);
-                        }
+                      //if (_formkey.currentState.validate()) {
+                      //enabling the loading state
+                      setState(() => loading = true);
+                      //wait for the signin function to complete
+                      dynamic result = await _auth.signInWithEmailAndPassword(
+                          "saugatoff@gmail.com", "dreamz123");
+                      //check if signin function returns user or not
+                      if (result == null) {
+                        setState(() {
+                          error =
+                              'could not sign in with the email and password';
+                          loading = false;
+                        });
+                      } else {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            'Wrapper', (Route<dynamic> route) => false);
                       }
+                      //}
                     },
                     //shows loading bar when login button is clicked
                     child: loading
