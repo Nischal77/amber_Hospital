@@ -37,6 +37,6 @@ class DatabaseService {
         departments: snapshot.data['departments'],
         wards: snapshot.data['wards'],
         ambulance: snapshot.data['ambulance'],
-        notificaton: snapshot.data['notification']);
+        notification: snapshot.data['notification']);
   }
 }

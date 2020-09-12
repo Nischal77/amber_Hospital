@@ -100,7 +100,7 @@ class _HospitalFormState extends State<HospitalForm> {
                                           hospitaldata.departments,
                                           hospitaldata.wards,
                                           hospitaldata.ambulance,
-                                          hospitaldata.notificaton);
+                                          hospitaldata.notification);
                                 }
                               },
                               //shows loading bar when login button is clicked

@@ -38,7 +38,7 @@ class _HospitaldState extends State<Hospitald> {
                       ),
                       Container(
                         child: Text(
-                          hospitaldata.location,
+                          hospitaldata.location.toString(),
                           style: TextStyle(fontSize: 44),
                         ),
                       ),

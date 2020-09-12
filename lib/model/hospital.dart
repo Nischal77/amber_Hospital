@@ -1,6 +1,9 @@
+import 'dart:html';
+
 class Hospital {
-  final String name, location;
-  final List doctors, departments, wards, ambulance, notificaton;
+  final String name;
+  final Coordinates location;
+  final List doctors, departments, wards, ambulance, notification;
   Hospital(
       {this.name,
       this.location,
@@ -8,5 +11,5 @@ class Hospital {
       this.departments,
       this.ambulance,
       this.wards,
-      this.notificaton});
+      this.notification});
 }
