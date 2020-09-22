@@ -1,12 +1,21 @@
 class Notification {
-  final String name, age, bloodgroup, sex, guardianContact, emergency;
+  final String name,
+      age,
+      bloodgroup,
+      sex,
+      guardianContact,
+      emergency,
+      date,
+      location;
   Notification(
       {this.name,
       this.age,
       this.bloodgroup,
       this.sex,
       this.guardianContact,
-      this.emergency});
+      this.emergency,
+      this.date,
+      this.location});
 
   Notification.fromJson(Map<String, dynamic> json)
       : name = json['name'],
@@ -14,7 +23,9 @@ class Notification {
         bloodgroup = json['bloodgroup'],
         sex = json['sex'],
         guardianContact = json['guardiancontact'],
-        emergency = json['emergency'];
+        emergency = json['emergency'],
+        date = json['date'],
+        location = json['location'];
 
   Map<String, dynamic> toJson() => {
         'name': name,
@@ -22,6 +33,8 @@ class Notification {
         'bloodgroup': bloodgroup,
         'sex': sex,
         'guardianContact': guardianContact,
-        'emergency': emergency
+        'emergency': emergency,
+        'date': date,
+        'location': location
       };
 }
