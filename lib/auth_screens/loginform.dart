@@ -124,7 +124,19 @@ class _LoginFormState extends State<LoginForm> {
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.white,
-                            ))))
+                            )))),
+            SizedBox(
+              height: 10,
+            ),
+            GestureDetector(
+              child: Container(
+                  alignment: Alignment.bottomCenter,
+                  child: Text("Forgot Password?")),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => ForgotPasswordScreen()));
+              },
+            )
           ],
         ),
       ),
